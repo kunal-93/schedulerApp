@@ -47,3 +47,26 @@ function getDurationFromMinutes(minutes) {
 setCourseHTML(allCourses[0]);
 // setCourseHTML(allCourses[1]);
 
+function getCourseAsHtmlString(course){
+  return `
+  <article class="course">
+  <h3>${course.name}</h3>
+  <ul>
+    <li>Course Code: <strong>${course.code}</strong></li>
+    <li>Instructor: <strong>${course.instructor}</strong></li>
+    <li>Start: <strong>${course.start.term} ${course.start.year}</strong></li>
+    <li>
+      Weeks: <strong>${course.weeks}</strong>
+      <ul>
+        <li>Includes Break: <strong>${course.breaks}</strong></li>
+      </ul>
+    </li>
+    <li>Duration: <strong>${getDurationFromMinutes(course.duration)}</strong></li>
+  </ul>
+</article>
+  `
+}
+
+document.getElementById("courses").innerHTML = allCourses.map(getCourseAsHtmlString).join('\n');
+
+
