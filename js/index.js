@@ -16,8 +16,27 @@ const course2 = {
   breaks: true,
   duration: 160
 };
+const course3 = {
+  name: `Applied Workflow`,
+  code: `WDDM-114`,
+  instructor: `Rocco`,
+  start: { term: `Fall`, year: 2019 },
+  weeks: 15,
+  breaks: true,
+  duration: 160
+};
+const course4 = {
+  name: `Web Prototyping`,
+  code: `WDDM-117`,
+  instructor: `Cory`,
+  start: { term: `Fall`, year: 2019 },
+  weeks: 15,
+  breaks: true,
+  duration: 160
+};
 
-const allCourses = [course1, course2];
+
+const allCourses = [course1, course2, course3, course4];
 
 function setCourseHTML(course){
   document.getElementById(`name`).innerHTML = course.name;
@@ -44,7 +63,7 @@ function getDurationFromMinutes(minutes) {
   return `${hrs} hr, ${mins} min`;
 }
 
-setCourseHTML(allCourses[0]);
+// setCourseHTML(allCourses[0]);
 // setCourseHTML(allCourses[1]);
 
 function getCourseAsHtmlString(course){
@@ -67,6 +86,13 @@ function getCourseAsHtmlString(course){
   `
 }
 
-document.getElementById("courses").innerHTML = allCourses.map(getCourseAsHtmlString).join('\n');
+function displayCourses(coursesToDisplay){
+  document.getElementById("courses").innerHTML = coursesToDisplay.map(getCourseAsHtmlString).join('\n');
+}
+
+document.getElementById("loadFirstThree").addEventListener("click", function(){
+  displayCourses(allCourses.slice(0,3));
+});
+
 
 
