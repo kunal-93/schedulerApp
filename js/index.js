@@ -86,13 +86,38 @@ function getCourseAsHtmlString(course){
   `
 }
 
+/************* EXECUTABLE *************/
+// Execute functions that will access data
+
+
+// LAB:
+// 1. Add a button the document that when clicked, 
+// will load ONLY the first three courses
+// Test by having at least 4 courses
+
+// 2. Wrap the below functionality in a function
+// that takes the Array to print as a parameter
+// Test by passing "allCourses".
+
+// 3. Wrap the entire execution in an Event handler
+// so that the code only runs when the window
+// has finished loading
+
+
 function displayCourses(coursesToDisplay){
   document.getElementById("courses").innerHTML = coursesToDisplay.map(getCourseAsHtmlString).join('\n');
 }
 
-document.getElementById("loadFirstThree").addEventListener("click", function(){
-  displayCourses(allCourses.slice(0,3));
+window.addEventListener("load", function(){
+
+  document.getElementById("loadFirstThree").addEventListener("click", function(){
+    displayCourses(allCourses.slice(0,3));
+  });
+
+  displayCourses(allCourses);
+
 });
+
 
 
 
